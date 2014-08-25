@@ -1,0 +1,754 @@
+div#container
+{
+   width: 1280px;
+   position: relative;
+   margin: 0 auto 0 auto;
+   text-align: left;
+}
+body
+{
+   background-color: #FFFFFF;
+   color: #000000;
+   font-family: Arial;
+   font-weight: normal;
+   font-size: 13px;
+   line-height: 1.1875;
+   margin: 0;
+   text-align: center;
+}
+#Layer10
+{
+   background-color: #006DD9;
+   background-image: none;
+}
+#Image5
+{
+   border: 0px #000000 solid;
+   padding: 0px 0px 0px 0px;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+}
+#Line4
+{
+   color: #FFFFFF;
+   background-color: #FFFFFF;
+   border-width: 0;
+   margin: 0;
+   padding: 0;
+}
+#Layer1
+{
+   background-color: transparent;
+   background-image: url(images/3929.jpg);
+   background-repeat: no-repeat;
+   background-position: center center;
+   background-attachment: scroll;
+   background-size: cover;
+}
+#wb_Text13 
+{
+   background-color: transparent;
+   background-image: none;
+   border: 0px #000000 solid;
+   padding: 0;
+   margin: 0;
+   text-align: left;
+}
+#wb_Text13 div
+{
+   text-align: left;
+}
+#Layer2
+{
+   background-color: transparent;
+   background-image: url(images/Sign-in_Admin_Layer2_bkgrnd.png);
+   background-repeat: repeat-x;
+   background-position: left top;
+   -moz-box-shadow: 0px 3px 10px #808080;
+   -webkit-box-shadow: 0px 3px 10px #808080;
+   box-shadow: 0px 3px 10px #808080;
+   filter: alpha(opacity=85);
+   opacity: 0.85;
+}
+#wb_Text1 
+{
+   background-color: transparent;
+   background-image: none;
+   border: 0px #000000 solid;
+   padding: 0;
+   margin: 0;
+   text-align: left;
+   -moz-box-shadow: 0px 0px 10px #C0C0C0;
+   -webkit-box-shadow: 0px 0px 10px #C0C0C0;
+   box-shadow: 0px 0px 10px #C0C0C0;
+}
+#wb_Text1 div
+{
+   text-align: left;
+}
+#Username
+{
+   border: 1px #CCCCCC solid;
+   -moz-border-radius: 4px;
+   -webkit-border-radius: 4px;
+   border-radius: 4px;
+   background-color: #FFFFFF;
+   background-image: none;
+   color :#696969;
+   font-family: Arial;
+   font-weight: normal;
+   font-size: 20px;
+   padding: 4px 4px 4px 4px;
+   text-align: left;
+   vertical-align: middle;
+}
+#Username:focus
+{
+   border-color: #66AFE9;
+   -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
+   -moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
+   box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
+   outline: 0;
+}
+#Password
+{
+   border: 1px #CCCCCC solid;
+   -moz-border-radius: 4px;
+   -webkit-border-radius: 4px;
+   border-radius: 4px;
+   background-color: #FFFFFF;
+   background-image: none;
+   color :#696969;
+   font-family: Arial;
+   font-weight: bold;
+   font-size: 20px;
+   padding: 4px 4px 4px 4px;
+   text-align: left;
+   vertical-align: middle;
+}
+#Password:focus
+{
+   border-color: #66AFE9;
+   -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
+   -moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
+   box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
+   outline: 0;
+}
+#wb_Text4 
+{
+   background-color: transparent;
+   background-image: none;
+   border: 0px #000000 solid;
+   padding: 0;
+   margin: 0;
+   text-align: right;
+}
+#wb_Text4 div
+{
+   text-align: right;
+}
+#wb_Text2 
+{
+   background-color: transparent;
+   background-image: none;
+   border: 0px #000000 solid;
+   padding: 0;
+   margin: 0;
+   text-align: right;
+}
+#wb_Text2 div
+{
+   text-align: right;
+}
+#Button1
+{
+   border: 1px #2E6DA4 solid;
+   -moz-border-radius: 4px;
+   -webkit-border-radius: 4px;
+   border-radius: 4px;
+   background-color: #3370B7;
+   background-image: none;
+   color: #FFFFFF;
+   font-family: Arial;
+   font-weight: bold;
+   font-size: 20px;
+}
+#Layer3
+{
+   background-color: transparent;
+   background-image: none;
+}
+#Image2
+{
+   border: 0px #000000 solid;
+   padding: 0px 0px 0px 0px;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+}
+#Layer2_Container
+{
+   width: 543px;
+   position: relative;
+   margin-left: auto;
+   margin-right: auto;
+   text-align: left;
+}
+#wb_Text1
+{
+   position: absolute;
+   left: 16px;
+   top: 25px;
+   width: 273px;
+   height: 40px;
+   z-index: 4;
+   text-align: left;
+}
+#wb_Text2
+{
+   position: absolute;
+   left: 96px;
+   top: 204px;
+   width: 127px;
+   height: 27px;
+   text-align: right;
+   z-index: 7;
+}
+#wb_Bookmark1
+{
+   position: absolute;
+   left: 47px;
+   top: 256px;
+   width: 20px;
+   height: 20px;
+   z-index: 12;
+}
+#Password
+{
+   position: absolute;
+   left: 223px;
+   top: 199px;
+   width: 214px;
+   height: 26px;
+   line-height: 26px;
+   z-index: 8;
+}
+#wb_Text4
+{
+   position: absolute;
+   left: 96px;
+   top: 145px;
+   width: 127px;
+   height: 27px;
+   text-align: right;
+   z-index: 6;
+}
+#wb_Image2
+{
+   position: absolute;
+   left: 24px;
+   top: 23px;
+   width: 188px;
+   height: 65px;
+   z-index: 3;
+}
+#Layer1
+{
+   position: absolute;
+   text-align: center;
+   left: 0px;
+   top: 0px;
+   width: 100%;
+   height: 837px;
+   z-index: 21;
+}
+#Layer10
+{
+   position: absolute;
+   text-align: center;
+   left: 0px;
+   top: 837px;
+   width: 100%;
+   height: 232px;
+   z-index: 20;
+}
+#Layer2
+{
+   position: absolute;
+   text-align: center;
+   left: 84px;
+   top: 158px;
+   width: 42.4219%;
+   height: 367px;
+   z-index: 11;
+}
+#Layer3
+{
+   position: absolute;
+   text-align: left;
+   left: 1px;
+   top: 0px;
+   width: 99.8438%;
+   height: 111px;
+   z-index: 10;
+}
+#Layer1_Container
+{
+   width: 1280px;
+   position: relative;
+   margin-left: auto;
+   margin-right: auto;
+   text-align: left;
+}
+#wb_Image5
+{
+   position: absolute;
+   left: 478px;
+   top: 22px;
+   width: 325px;
+   height: 114px;
+   z-index: 0;
+}
+#Layer10_Container
+{
+   width: 1280px;
+   position: relative;
+   margin-left: auto;
+   margin-right: auto;
+   text-align: left;
+}
+#Bookmark1
+{
+   visibility: hidden;
+}
+#Username
+{
+   position: absolute;
+   left: 223px;
+   top: 142px;
+   width: 214px;
+   height: 25px;
+   line-height: 25px;
+   z-index: 5;
+}
+#wb_Text13
+{
+   position: absolute;
+   left: 493px;
+   top: 192px;
+   width: 294px;
+   height: 16px;
+   z-index: 2;
+   text-align: left;
+}
+#Button1
+{
+   position: absolute;
+   left: 190px;
+   top: 267px;
+   width: 121px;
+   height: 48px;
+   z-index: 9;
+}
+#Line4
+{
+   position: absolute;
+   left: 0px;
+   top: 160px;
+   width: 1280px;
+   height: 5px;
+   z-index: 1;
+}
+@media only screen and (min-width: 768px) and (max-width: 1279px)
+{
+div#container
+{
+   width: 768px;
+}
+#Layer10
+{
+   left: 0px;
+   top: 1072px;
+   height: 232px;
+   visibility: visible;
+   display: inline;
+   background-color: #006DD9;
+   background-image: none;
+}
+#Layer10
+{
+   width: 100%;
+}
+#Layer10_Container
+{
+   width: 768px;
+}
+#wb_Image5
+{
+   left: 222px;
+   top: 22px;
+   width: 325px;
+   height: 114px;
+   visibility: visible;
+   display: inline;
+}
+#Line4
+{
+   left: 1px;
+   top: 160px;
+   width: 767px;
+   height: 5px;
+   visibility: visible;
+   display: inline;
+   color: #A0A0A0;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Layer1
+{
+   left: 0px;
+   top: 0px;
+   height: 1072px;
+   visibility: visible;
+   display: inline;
+   font-size: 13px;
+   background-color: transparent;
+   background-image: url(images/3929.jpg);
+   background-repeat: no-repeat;
+   background-position: center center !important;
+   background-attachment: scroll;
+   background-size: cover;
+}
+#Layer1
+{
+   width: 100.1302%;
+}
+#Layer1_Container
+{
+   width: 769px;
+}
+#wb_Text13
+{
+   left: 237px;
+   top: 192px;
+   width: 294px;
+   height: 16px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#Layer2
+{
+   left: 134px;
+   top: 157px;
+   height: 367px;
+   visibility: visible;
+   display: inline;
+   font-size: 13px;
+   background-color: transparent;
+   background-image: url(images/Sign-in_Admin_Layer2_bkgrnd768.png);
+   background-repeat: repeat-x;
+   background-position: left top;
+}
+#Layer2
+{
+   width: 65.2344%;
+}
+#Layer2_Container
+{
+   width: 501px;
+}
+#wb_Bookmark1
+{
+   left: 31px;
+   top: 234px;
+   width: 20px;
+   height: 20px;
+   visibility: visible;
+   display: inline;
+}
+#wb_Text1
+{
+	left: 15px;
+	top: 27px;
+	width: 331px;
+	height: 40px;
+	visibility: visible;
+	display: inline;
+	background-color: transparent;
+	background-image: none;
+}
+#Username
+{
+   left: 223px;
+   top: 143px;
+   width: 214px;
+   height: 25px;
+   visibility: visible;
+   display: inline;
+   color: #696969;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Password
+{
+   left: 223px;
+   top: 199px;
+   width: 214px;
+   height: 26px;
+   visibility: visible;
+   display: inline;
+   color: #696969;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#wb_Text4
+{
+   left: 96px;
+   top: 146px;
+   width: 127px;
+   height: 27px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#wb_Text2
+{
+   left: 96px;
+   top: 205px;
+   width: 127px;
+   height: 27px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#Button1
+{
+   left: 190px;
+   top: 267px;
+   width: 121px;
+   height: 48px;
+   visibility: visible;
+   display: inline;
+   color: #FFFFFF;
+   background-color: #3370B7;
+   background-image: none;
+}
+#Layer3
+{
+   height: 111px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#wb_Image2
+{
+   left: 24px;
+   top: 23px;
+   width: 188px;
+   height: 65px;
+   visibility: visible;
+   display: inline;
+}
+}
+@media only screen and (max-width: 767px)
+{
+div#container
+{
+   width: 420px;
+}
+#Layer10
+{
+   left: 0px;
+   top: 652px;
+   height: 232px;
+   visibility: visible;
+   display: inline;
+   background-color: #006DD9;
+   background-image: none;
+}
+#Layer10
+{
+   width: 100%;
+}
+#Layer10_Container
+{
+   width: 420px;
+}
+#wb_Image5
+{
+   left: 52px;
+   top: 21px;
+   width: 316px;
+   height: 114px;
+   visibility: visible;
+   display: inline;
+}
+#Line4
+{
+   left: 0px;
+   top: 160px;
+   width: 419px;
+   height: 5px;
+   visibility: visible;
+   display: inline;
+   color: #A0A0A0;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Layer1
+{
+   left: 0px;
+   top: 0px;
+   height: 652px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: url(images/3929.jpg);
+   background-repeat: no-repeat;
+   background-position: center center !important;
+   background-attachment: scroll;
+   background-size: cover;
+}
+#Layer1
+{
+   width: 100%;
+}
+#Layer1_Container
+{
+   width: 420px;
+}
+#wb_Text13
+{
+   left: 63px;
+   top: 192px;
+   width: 294px;
+   height: 16px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#Layer2
+{
+   left: 19px;
+   top: 106px;
+   height: 350px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: url(images/Sign-in_Admin_Layer2_bkgrnd420.png);
+   background-repeat: repeat-x;
+   background-position: left top;
+}
+#Layer2
+{
+   width: 90.9524%;
+}
+#Layer2_Container
+{
+   width: 382px;
+}
+#wb_Bookmark1
+{
+   left: 71px;
+   top: 86px;
+   width: 20px;
+   height: 20px;
+   visibility: visible;
+   display: inline;
+}
+#wb_Text1
+{
+	left: 15px;
+	top: 26px;
+	width: 277px;
+	height: 40px;
+	visibility: visible;
+	display: inline;
+	background-color: transparent;
+	background-image: none;
+}
+#Username
+{
+   left: 73px;
+   top: 131px;
+   width: 214px;
+   height: 25px;
+   visibility: visible;
+   display: inline;
+   color: #696969;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Password
+{
+   left: 73px;
+   top: 201px;
+   width: 214px;
+   height: 26px;
+   visibility: visible;
+   display: inline;
+   color: #696969;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#wb_Text4
+{
+   left: 63px;
+   top: 104px;
+   width: 127px;
+   height: 27px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#wb_Text2
+{
+   left: 58px;
+   top: 174px;
+   width: 127px;
+   height: 27px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#Button1
+{
+   left: 137px;
+   top: 262px;
+   width: 94px;
+   height: 24px;
+   visibility: visible;
+   display: inline;
+   color: #FFFFFF;
+   background-color: #3370B7;
+   background-image: none;
+}
+#Layer3
+{
+   height: 111px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#wb_Image2
+{
+   left: 24px;
+   top: 23px;
+   width: 188px;
+   height: 65px;
+   visibility: visible;
+   display: inline;
+}
+}

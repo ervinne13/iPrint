@@ -163,6 +163,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Third-party Service Providers         
+         */
+        Yajra\Datatables\DatatablesServiceProvider::class,
+        
     ],
 
     /*
