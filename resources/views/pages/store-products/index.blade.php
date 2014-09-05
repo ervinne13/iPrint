@@ -1,5 +1,7 @@
 @extends('layouts.lte')
 
+@include('templates.table-inline-actions')
+
 @section('css')
 <link href="{{ asset("/vendor/dataTables/datatables.min.css") }}" rel="stylesheet" type="text/css" />
 @endsection
@@ -55,5 +57,3 @@ var storeId = '{{ $store->id }}';
 </section><!-- /.content -->
 
 @endsection
-
-@include('templates.table-inline-actions')

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JobOrder;
 use App\Models\Role;
 use App\Models\Store;
 use App\Models\User;
@@ -18,8 +19,16 @@ class StoresController extends Controller {
      *
      * @return Response
      */
-    public function index() {
-        return view('pages.stores.index');
+    public function index(Request $request) {
+        if ($request->ajax() || $request->wantsJson()) {
+            return Store::with('owner')->get();
+        } else {
+            return view('pages.stores.index');
+        }
+    }
+
+    public function active() {
+        return Store::Active()->with('owner')->get();
     }
 
     public function datatable() {
@@ -74,7 +83,18 @@ class StoresController extends Controller {
      * @return Response
      */
     public function show($id) {
-        //
+        $data["store"] = Store::find($id);
+
+        $data["jobOrders"] = JobOrder::
+                Store($id)
+                ->NewestOrders(5)
+                ->with(['productJunctions' => function($query) {
+                        $query->leftJoin('products', 'product_id', '=', 'id');
+                    }])
+                ->get();
+
+//        return $data["jobOrders"];
+        return view('pages.stores.store', $data);
     }
 
     /**

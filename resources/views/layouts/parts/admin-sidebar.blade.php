@@ -24,7 +24,7 @@
                 <a href="/stores/create">
                     <span><i class="fa fa-plus"></i> Register new store</span>
                 </a>
-            </li           
+            </li>
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

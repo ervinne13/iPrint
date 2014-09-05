@@ -16,6 +16,8 @@
 var availableUOM = {!! json_encode($availableUOM) !!};
 var storeId = '{{$store->id}}';
 var productId = 0;
+
+var mode = "create";
 </script>
 
 @endsection

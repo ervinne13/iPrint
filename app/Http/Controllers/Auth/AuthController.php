@@ -64,9 +64,10 @@ use AuthenticatesAndRegistersUsers,
      */
     protected function create(array $data) {
         return User::create([
-                    'name'     => $data['name'],
-                    'email'    => $data['email'],
-                    'password' => bcrypt($data['password']),
+                    'name'      => $data['name'],
+                    'email'     => $data['email'],
+                    'api_token' => str_random(60),
+                    'password'  => \Hash::make($data['password']),
         ]);
     }
 
@@ -88,9 +89,20 @@ use AuthenticatesAndRegistersUsers,
 
         if ($user->role_code == Role::CODE_ADMIN) {
             return "/administration";
+        } else if ($user->role_code == Role::CODE_USER) {
+            return "/users/dashboard";
         } else {
             return "/stores/" . $user->ownedShop->id;
         }
+    }
+
+    /**
+     * For testing only
+     * @param Request $request
+     */
+    public function clearThrottle(Request $request) {
+        $this->clearLoginAttempts($request);
+        return "Throttles cleared";
     }
 
 }

@@ -11,7 +11,7 @@ var testNotifier = {};
     });
 
     function initializeWS() {
-        testNotifier.WSConnection = new WebSocket('ws://localhost:3013');
+        testNotifier.WSConnection = new WebSocket('ws://192.168.1.2:3013');
         testNotifier.WSConnection.onopen = function (e) {
             console.log("Connection established!");
             console.log(e);

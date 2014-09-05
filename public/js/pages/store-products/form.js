@@ -1,9 +1,11 @@
-/* global _, availableUOM, storeId, productId, datatable_utilities, baseURL, form_utilities */
+/* global _, availableUOM, storeId, productId, datatable_utilities, baseURL, form_utilities, globals */
 
 (function () {
 
     var productUOMTemplate;
     var $uomTable;
+
+    var fileUploadPending = false;
 
     $(document).ready(function () {
 
@@ -20,34 +22,46 @@
     }
 
     function initializeEvents() {
+        $("#input-product-image").change(function () {
+            previewFileImage(this, $('#product-image'));
+            uploadFile(this);
+        });
+
         $('#action-add-uom').click(function () {
-            var html = productUOMTemplate({
-                availableUOM: availableUOM,
-                uom_code: null,
-                price_per_uom: 0
+            addUOM();
+        });
+
+        $('#uom-table').on('click', '.action-edit', function (e) {
+            e.preventDefault();
+            editUOM($(this));
+        });
+
+        $('#uom-table').on('click', '.action-delete', function (e) {
+            e.preventDefault();
+            deleteUOM($(this));
+        });
+
+        $('#action-create-new').click(function () {
+            saveProduct(function () {
+                setTimeout(function () {
+                    window.location.reload();
+                }, globals.reloadRedirectWaitTime);
             });
+        });
 
-            swal({
-                type: 'info',
-                html: html,
-                showCloseButton: true,
-                showCancelButton: true,
-                confirmButtonText: '<i class="fa fa-check"></i> Add UOM'
-            }).then(function () {
-                var data = form_utilities.formToJSON($('#product-uom-form'));
-                console.log(data);
-                data.uom = {
-                    name: $('#input-uom option:selected').html()
-                };
+        $('#action-create-close').click(function () {
+            saveProduct(function () {
+                setTimeout(function () {
+                    window.location.href = "/stores/" + storeId + "/products";
+                }, globals.reloadRedirectWaitTime);
+            });
+        });
 
-//                $uomTable.row.add(data);
-                $uomTable.row.add(data).draw();
-
-                $('#uom-table td:first-child > a').unbind('click');
-                $('#uom-table td:first-child > a').click(function (e) {
-                    e.preventDefault();
-                    alert($(this).data('original-title'));
-                });
+        $('#action-update-close').click(function () {
+            updateProduct(function () {
+                setTimeout(function () {
+                    window.location.href = "/stores/" + storeId + "/products";
+                }, globals.reloadRedirectWaitTime);
             });
         });
 
@@ -57,7 +71,7 @@
         $uomTable = $('#uom-table').DataTable({
             processing: true,
             paging: false,
-//            serverSide: true,
+//            serverSide: mode == "edit", //  will fetch data from server on edit mode
             search: {
                 caseInsensitive: true
             },
@@ -87,21 +101,169 @@
         });
     }
 
-    function saveProductUOM(callback) {
+    function previewFileImage(input, $img) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $img.attr('src', e.target.result);
+            };
 
-        var url = baseURL + "/products/";
-        var data = shop;
-        data._token = _token;
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function uploadFile(input) {
+        if (input.files && input.files[0]) {
+            var formData = new FormData();
+            formData.append('file', input.files[0]);
+
+            $.ajax({
+                url: '/file/upload',
+                type: 'POST',
+                processData: false, // important
+                contentType: false, // important                
+                data: formData,
+                success: function (response) {
+                    console.log(response);
+                    $('[name=image_url]').val("/uploads/" + response);
+                    fileUploadPending = false;
+                }
+            });
+
+            fileUploadPending = true;
+
+        }
+    }
+
+    function editUOM($editButton) {
+
+        addUOM(function () {
+            deleteUOM($editButton, true);   //  true = noConfirm
+        });
+
+    }
+
+    function deleteUOM($deleteButton, noConfirm) {
+
+        if (noConfirm) {
+            $uomTable.row($deleteButton.parents('tr')).remove().draw();
+        } else {
+            swal({
+                type: 'warning',
+                title: "Are you sure?",
+                text: "Deleting a unit of measurement can cause issues when opening old job orders that used this unit of measurement!.",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: '<i class="fa fa-close"></i> Delete UOM'
+            }).then(function () {
+                $uomTable.row($deleteButton.parents('tr')).remove().draw();
+
+            });
+        }
+    }
+
+    function addUOM(callback) {
+        var html = productUOMTemplate({
+            availableUOM: availableUOM,
+            uom_code: null,
+            price_per_uom: 0
+        });
+
+        swal({
+            type: 'info',
+            html: html,
+            showCloseButton: true,
+            showCancelButton: true,
+            confirmButtonText: '<i class="fa fa-check"></i> Add UOM'
+        }).then(function () {
+            var data = form_utilities.formToJSON($('#product-uom-form'));
+            console.log(data);
+            data.uom = {
+                name: $('#input-uom option:selected').html()
+            };
+
+            $uomTable.row.add(data).draw();
+
+            if (callback) {
+                callback();
+            }
+        });
+    }
+
+    function saveProduct(callback) {
+
+        if (fileUploadPending) {
+            swal({
+                title: "Upload Pending",
+                text: "Upload is still ongoing! Please wait",
+                type: "warning"
+            });
+            return;
+        }
+
+        var url = "/stores/" + storeId + "/products";
+        var uom = $uomTable.rows().data();
+        var data = form_utilities.formToJSON($('#form-store-product'));
+        data.product_uom = uom.length > 0 ? cleanupDataTableData(uom) : [];
+        console.log(data.product_uom);
+        console.log(data);
+
         $.ajax({
             url: url,
             type: 'POST',
-            data: shop,
+            data: data,
             dataType: 'json',
             success: function (response) {
                 console.log(response);
+                swal("Success!", "Product Saved!", "success");
+                callback();
             }
         });
 
+    }
+
+    function updateProduct(callback) {
+
+        if (fileUploadPending) {
+            swal({
+                title: "Upload Pending",
+                text: "Upload is still ongoing! Please wait",
+                type: "warning"
+            });
+            return;
+        }
+
+        var url = "/stores/" + storeId + "/products/" + productId;
+        var uom = $uomTable.rows().data();
+        var data = form_utilities.formToJSON($('#form-store-product'));
+        data.product_uom = uom.length > 0 ? cleanupDataTableData(uom) : [];
+        console.log(data.product_uom);
+        console.log(data);
+
+        $.ajax({
+            url: url,
+            type: 'PUT',
+            data: data,
+            dataType: 'json',
+            success: function (response) {
+                console.log(response);
+                swal("Success!", "Product Saved!", "success");
+                callback();
+            }
+        });
+
+    }
+
+    function cleanupDataTableData(rawData) {
+        var data = [];
+
+        for (var i in rawData) {
+            if (!isNaN(i)) {
+                data.push(rawData[i]);
+            }
+        }
+
+        return data;
     }
 
 })();

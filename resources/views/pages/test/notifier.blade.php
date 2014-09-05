@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Notifier</title>
-        <script type="text/javascript" src="/js/jquery-2.1.1.js"></script>
+        <script src="{{ asset ("/bower_components/AdminLTE/plugins/jQuery/jQuery-2.2.3.min.js") }}"></script>
         <script type="text/javascript" src="/js/pages/test-notifier.js"></script>
     </head>
     <body>

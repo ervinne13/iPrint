@@ -16,11 +16,19 @@ datatable_utilities.getInlineActionsView = function (actions) {
 
 };
 
-datatable_utilities.getDefaultEditAction = function (id) {
+datatable_utilities.getDefaultEditAction = function (id, baseUrl) {
+
+    var href = window.location.href + "/" + id + "/edit";
+
+    if (baseUrl) {
+        href = baseUrl + "/" + id + "/edit";
+    }
+
     return {
         id: id,
-        href: window.location.href + "/" + id + "/edit",
-        name: "Edit",
+        href: href,
+        name: "edit",
+        displayName: "Edit",
         icon: "fa-pencil"
     };
 };
@@ -29,8 +37,10 @@ datatable_utilities.getDefaultEditAction = function (id) {
 datatable_utilities.getDefaultDeleteAction = function (id) {
     return {
         id: id,
-        href: window.location.href + "/" + id,
-        name: "Delete",
+//        href: window.location.href + "/" + id,
+        href: "javascript:void(0)",
+        name: "delete",
+        displayName: "Delete",
         icon: "fa-times"
     };
 };

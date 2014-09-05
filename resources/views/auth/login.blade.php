@@ -48,6 +48,8 @@
             <div class="login-box-body">
                 <p class="login-box-msg">Sign in</p>
 
+                <!--Why you should not show what went wrong on login fail:-->
+                <!--http://security.stackexchange.com/questions/62661/generic-error-message-for-wrong-password-or-username-is-this-really-helpful-->
                 <form action="{{url('/login')}}" method="POST">
                     {{ csrf_field() }}
 
@@ -80,8 +82,7 @@
                     </div>
                 </form>
 
-                <a href="#">I forgot my password</a><br>
-                <a href="register.html" class="text-center">Register</a>
+                <a href="/register" class="text-center">Register</a>
             </div>
             <!-- /.login-box-body -->
         </div>

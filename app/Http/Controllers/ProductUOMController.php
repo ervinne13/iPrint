@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProductUOM;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
 use Yajra\Datatables\Facades\Datatables;
 
 class ProductUOMController extends Controller {
@@ -76,13 +78,20 @@ class ProductUOMController extends Controller {
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Removes the junction bet. product and uom
      *
-     * @param  int  $id
+     * @param  int  $productId
      * @return Response
      */
-    public function destroy($id) {
-        //
+    public function destroy($productId, $uomCode) {
+
+        try {
+            ProductUOM::find($productId, $uomCode)->delete();
+            return "OK";
+        } catch (Exception $e) {
+            Log::error($e);
+            return respones($e->getMessage(), 500);
+        }
     }
 
 }

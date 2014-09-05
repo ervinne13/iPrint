@@ -5,8 +5,7 @@
 
     $(document).ready(function () {
         setupValidation();
-        $('#action-submit').click(submitForm);
-
+        initializeEvents();
     });
 
     function setupValidation() {
@@ -18,6 +17,10 @@
                 }
             }
         });
+    }
+
+    function initializeEvents() {
+        $('#action-submit').click(submitForm);
     }
 
     function submitForm() {

@@ -11,30 +11,63 @@
   |
  */
 
+Route::auth();
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::auth();
+//  Custom registration
+Route::post('/users/register', 'RegistrationController@registerUser');
 
-Route::get('/home', 'HomeController@index');
+Route::group(['middleware' => 'api'], function () {
+    Route::post('/api/login', 'API\v1\AuthController@login');
+    Route::post('/api/files/upload', 'API\v1\FilesController@upload');
+});
 
-Route::controller('/test', 'TestController');
-Route::controller('/administration', 'AdministrationController');
+Route::group(['prefix' => 'api', 'middleware' => 'auth:api'], function() {
+    Route::get('stores', 'StoresController@index');
+    Route::get('stores/active', 'StoresController@active');
+    Route::get('stores/{storeId}/products', 'StoreProductsController@index');
+
+    Route::post('joborders', 'JobOrdersController@store');
+});
+
 
 Route::group(['middleware' => 'auth'], function () {
+
+    Route::controller('/administration', 'AdministrationController');
 
     //  Stores & Products
     Route::get('/stores/datatable', 'StoresController@datatable');
     Route::get('/stores/{storeId}/products/datatable', 'StoreProductsController@datatable');
+    Route::get('/stores/{storeId}/orders/datatable', 'StoreJobOrdersController@datatable');
+    Route::get('/stores/{storeId}/orders/datatable/{active}', 'StoreJobOrdersController@datatable');
+
+    Route::get('/stores/{storeId}/salesSummaryReport', 'StoreJobOrdersController@salesSummaryReport');
+    Route::get('/stores/{storeId}/orders/active', 'StoreJobOrdersController@activeOrders');
+
     Route::get('/products/{product}/uom/datatable', 'ProductUOMController@datatable');
+
     Route::resource('stores', 'StoresController');
     Route::resource('stores.products', 'StoreProductsController');
+    Route::resource('stores.orders', 'StoreJobOrdersController');
     Route::resource('products.uom', 'ProductUOMController');
 
     //  UOM
     Route::get('/uom/datatable', 'UOMController@datatable');
     Route::resource('uom', 'UOMController');
 
+    Route::get('/users/datatable', 'UsersController@datatable');
+    Route::get('/users/dashboard', 'UsersController@dashboard');
+    Route::get('/users/{userId}/changepassword', 'UsersController@changepassword');
+    Route::post('/users/{userId}/changepassword', 'UsersController@updatePassword');
+    Route::get('/users/{userId}/passwordchanged', 'UsersController@changePasswordSuccess');
     Route::resource('users', 'UsersController');
+
+    //  Misc.
+    Route::post('/file/upload', 'FileController@upload');
 });
+
+//  For Testing
+Route::get('/clear-throttles', 'Auth\AuthController@clearThrottle');
+Route::controller('/test', 'TestController');

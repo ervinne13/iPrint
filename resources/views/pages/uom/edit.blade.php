@@ -4,6 +4,13 @@
 <script src="{{ asset ("/js/form-utilities.js") }}" type="text/javascript"></script>
 <script src="{{ asset ("/vendor/jquery/jquery.validate.js") }}" type="text/javascript"></script>
 <script src="{{ asset ("/js/pages/uom/form.js") }}" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+var uomId = '{{ $uom->code }}';
+
+</script>
+
 @endsection
 
 @section('content')

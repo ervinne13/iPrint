@@ -46,6 +46,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             @include('layouts.parts.admin-sidebar')
             @elseif (Auth::user()->role_code == "STORE")
             @include('layouts.parts.store-manager-sidebar')
+            @elseif (Auth::user()->role_code == "USER")
+            @include('layouts.parts.user-sidebar')
             @endif
 
             <!-- Content Wrapper. Contains page content -->
@@ -71,6 +73,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script src="{{ asset ("/bower_components/AdminLTE/plugins/select2/select2.min.js") }}" type="text/javascript"></script>
 
         <script src="{{ asset ("/vendor/underscore/underscore.js") }}" type="text/javascript"></script>
+
+        <script src="{{ asset ("/js/utilities.js") }}" type="text/javascript"></script>
+        <script src="{{ asset ("/js/globals.js") }}" type="text/javascript"></script>
 
         <!-- Optionally, you can add Slimscroll and FastClick plugins.
               Both of these plugins are recommended to enhance the

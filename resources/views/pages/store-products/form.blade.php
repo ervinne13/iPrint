@@ -10,7 +10,19 @@
                 <div id="panel-store" class="box-body">
                     <div class="form-group">
                         <label for="input-name">Name</label>
-                        <input type="text" required name="name" class="form-control" id="input-name" placeholder="Store Name" value="{{ $product->name }}">
+                        <input type="text" required name="name" class="form-control" id="input-name" placeholder="Product Name" value="{{ $product->name }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="input-name">Description</label>
+                        <textarea type="text" required name="description" class="form-control" id="input-description" placeholder="Product Description">{{ $product->description }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-product-image">Product Image</label>
+                        <input type="file" id="input-product-image" name="image">
+                        <p class="help-block">Ideal size is 250px x 250px</p>
+
+                        <img src="{{ URL::to('/') . $product->image_url }}" width="250px" height="250px" id="product-image">
+                        <input type="hidden" name="image_url">
                     </div>
                 </div><!-- /.box-body -->
             </div>

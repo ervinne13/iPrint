@@ -15,9 +15,13 @@ class Store extends Model {
     protected $fillable = [
         'name', 'location_lat', 'location_long'
     ];
-
+    
     public function owner() {
         return $this->hasOne(User::class, 'id', 'owner_id');
+    }
+
+    public function scopeActive($query) {
+        return $query->where("is_active", '1');
     }
 
 }

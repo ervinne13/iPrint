@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\UOM;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Yajra\Datatables\Facades\Datatables;
@@ -41,7 +42,15 @@ class UOMController extends Controller {
      * @return Response
      */
     public function store(Request $request) {
-        //
+        $request_assoc = $request->all();
+        try {
+            $uom = new UOM($request_assoc);
+            $uom->save();
+
+            return $uom;
+        } catch (Exception $e) {
+            return response($e->getMessage(), 400); //  bad request
+        }
     }
 
     /**
@@ -74,7 +83,23 @@ class UOMController extends Controller {
      * @return Response
      */
     public function update(Request $request, $id) {
-        //
+
+        $request_assoc = $request->all();
+
+        try {
+            $uom = UOM::find($id);
+
+            if ($uom) {
+                $uom->fill($request_assoc);
+                $uom->save();
+
+                return $uom;
+            } else {
+                return response("UOM not found", 404);
+            }
+        } catch (Exception $e) {
+            return response($e->getMessage(), 400); //  bad request
+        }
     }
 
     /**
@@ -84,7 +109,19 @@ class UOMController extends Controller {
      * @return Response
      */
     public function destroy($id) {
-        //
+        try {
+            $uom = UOM::find($id);
+
+            if ($uom) {
+                $uom->delete();
+
+                return "OK";
+            } else {
+                return response("UOM not found", 404);
+            }
+        } catch (Exception $e) {
+            return response($e->getMessage(), 500); //  internal server error
+        }
     }
 
 }

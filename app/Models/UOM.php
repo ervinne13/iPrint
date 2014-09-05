@@ -9,5 +9,9 @@ class UOM extends Model {
     protected $table      = "uom";
     protected $primaryKey = "code";
     public $incrementing  = false;
+    public $timestamps    = false;
+    protected $fillable   = [
+        'code', 'name'
+    ];
 
 }
