@@ -53,16 +53,19 @@
                             <a href="/login"><i class="fa fa-sign-in fa-2x">&nbsp;</i><br>Sign-in</a>
                         </li>
                         <li>
-                            <label for="ResponsiveMenu1-submenu-1" class="toggle"><i class="fa fa-user-plus fa-2x">&nbsp;</i>Sign-up<b class="arrow-down"></b>
-                            </label><a href="http://localhost/others/iPrint%20Old/offline/Sign-up.php"><i class="fa fa-user-plus fa-2x">&nbsp;</i><br>Sign-up<b class="arrow-down"></b></a>
-                            <input type="checkbox" id="ResponsiveMenu1-submenu-1">
-                            <ul>
-                                <li><a href="http://localhost/others/iPrint%20Old/offline/Sign-up.php"><i class="fa fa-users fa-2x">&nbsp;</i>Customer</a>
-                                </li>
-                                <li><a href="http://localhost/others/iPrint%20Old/offline/Sign-up_shopOwner.php"><i class="fa fa-user-md fa-2x">&nbsp;</i>Shop&nbsp;Owner</a>
-                                </li>
-                            </ul>
+                            <a href="/register"><i class="fa fa-user-plus fa-2x">&nbsp;</i><br>Register</a>
                         </li>
+                        <!--                        <li>
+                                                    <label for="ResponsiveMenu1-submenu-1" class="toggle"><i class="fa fa-user-plus fa-2x">&nbsp;</i>Sign-up<b class="arrow-down"></b>
+                                                    </label><a href="http://localhost/others/iPrint%20Old/offline/Sign-up.php"><i class="fa fa-user-plus fa-2x">&nbsp;</i><br>Sign-up<b class="arrow-down"></b></a>
+                                                    <input type="checkbox" id="ResponsiveMenu1-submenu-1">
+                                                    <ul>
+                                                        <li><a href="http://localhost/others/iPrint%20Old/offline/Sign-up.php"><i class="fa fa-users fa-2x">&nbsp;</i>Customer</a>
+                                                        </li>
+                                                        <li><a href="http://localhost/others/iPrint%20Old/offline/Sign-up_shopOwner.php"><i class="fa fa-user-md fa-2x">&nbsp;</i>Shop&nbsp;Owner</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>-->
                         <li><a href="/apk/iPrint.apk"><i class="fa fa-download fa-2x">&nbsp;</i><br>Download</a>
                         </li>
                     </ul>
