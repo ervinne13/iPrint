@@ -1,7 +1,7 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo">{!!env("APP_TITLE_HTML")!!}</a>
+    <a href="#" class="logo">{!!env("APP_TITLE_HTML")!!}</a>
 
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">
