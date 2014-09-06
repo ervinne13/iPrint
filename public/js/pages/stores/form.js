@@ -41,6 +41,10 @@
                 dataType: 'json',
                 success: function (response) {
                     console.log(response);
+                    swal("Success!", "Store Saved!", "success");
+                    setTimeout(function () {
+                        window.location.href = "/stores";
+                    }, globals.reloadRedirectWaitTime);
                 }
             });
 
