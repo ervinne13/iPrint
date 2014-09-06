@@ -2,7 +2,7 @@
 (function () {
 
     var moduleUrl = "/stores/" + storeId + "/orders/";
-    var noHttpBaseURL = utilities.trimHttp(baseURL);
+    var noHttpBaseURL = utilities.trimPort(utilities.trimHttp(baseURL));
     var WSConnection = null;
 
     $(document).ready(function () {

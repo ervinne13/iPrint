@@ -3,7 +3,7 @@
 
 (function () {
 
-    var noHttpBaseURL = utilities.trimHttp(baseURL);
+    var noHttpBaseURL = utilities.trimPort(utilities.trimHttp(baseURL));
     var WSConnection = null;
     var $joTable;
 

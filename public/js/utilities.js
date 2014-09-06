@@ -17,3 +17,14 @@ utilities.setBoxLoading = function ($element, show) {
 utilities.trimHttp = function (url) {
     return url.substring(7, url.length);
 };
+
+utilities.trimPort = function (url) {
+    if (url.indexOf(":") > 0) {
+        var splittedUrl = url.split(':');
+        console.log(splittedUrl);
+        return splittedUrl[0];
+    } else {
+        return url;
+    }
+
+};
