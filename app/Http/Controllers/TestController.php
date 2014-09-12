@@ -22,4 +22,8 @@ class TestController extends Controller {
         return Auth::guard('api')->user();
     }
 
+    public function dynamicField() {
+        return view('pages.test.dynamic-field');
+    }
+
 }

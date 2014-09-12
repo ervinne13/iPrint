@@ -115,7 +115,20 @@ class StoresController extends Controller {
      * @return Response
      */
     public function update(Request $request, $id) {
-        //
+
+        try {
+            $store = Store::find($id);
+
+            if ($store) {
+                $store->min_order_limit = $request->min_order_limit;
+                $store->save();
+                return $store;
+            } else {
+                return response("Store not found", 404);
+            }
+        } catch (Exception $e) {            
+            return response($e->getMessage(), 500);
+        }
     }
 
     /**

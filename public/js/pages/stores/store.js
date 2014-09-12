@@ -9,9 +9,35 @@
     var salesChartOptions;
 
     $(document).ready(function () {
+        initializeEvents();
         initializeSalesReport();
         loadSalesReportData();
     });
+
+    function initializeEvents() {
+        $('#action-save-settings').click(saveSettings);
+    }
+
+    function saveSettings() {
+        var url = baseURL + "/stores/" + storeId;
+        var data = {
+            min_order_limit: $('#input-min-order').val()
+        };
+
+        $.ajax({
+            url: url,
+            type: 'PUT',
+            data: data,
+            dataType: 'json',
+            success: function (response) {
+                console.log(response);
+                swal("Success!", "Store Saved!", "success");
+                setTimeout(function () {
+                    window.location.href = "/stores/" + storeId;
+                }, globals.reloadRedirectWaitTime);
+            }
+        });
+    }
 
     function initializeSalesReport() {
         var salesChartCanvas = $("#salesChart").get(0).getContext("2d");

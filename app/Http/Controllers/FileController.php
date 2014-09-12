@@ -28,7 +28,16 @@ class FileController extends Controller {
             return response("File invalid or no file uploaded", 500);
         }
 
+        if ($this->startsWith($generatedFilename, "//")) {
+            $generatedFilename = substr($generatedFilename, 1); //  trim the first /
+        }
+
         return $generatedFilename;
+    }
+
+    private function startsWith($haystack, $needle) {
+        // search backwards starting from haystack length characters from the end
+        return $needle === "" || strrpos($haystack, $needle, -strlen($haystack)) !== false;
     }
 
     private function getFileExtension($fileName) {

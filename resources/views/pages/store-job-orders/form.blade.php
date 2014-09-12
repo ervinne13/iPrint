@@ -35,7 +35,12 @@
                         <div class="form-group">
                             <label for="input-name">Attachment</label>
                             <a href="{{ $jobOrder->attachment_url }}" target="_blank">{{ $jobOrder->attachment_url }}</a>                            
+                        </div> 
+                        <div class="form-group">
+                            <label for="input-name">Payment Supporting Attachment</label>
+                            <a href="{{ $jobOrder->payment_supporting_attachment_url }}" target="_blank">{{ $jobOrder->payment_supporting_attachment_url }}</a>
                         </div>
+
                         <div class="form-group">
                             <label for="input-name">Status</label>
                             <select name="status" class="form-control">

@@ -41,7 +41,15 @@ class JobOrdersController extends Controller {
         $request_assoc = $request->toArray();
 
         $jobOrderProducts = [];
-        $jobOrder = new JobOrder($request_assoc);
+        $jobOrder         = new JobOrder($request_assoc);
+
+        if ($this->startsWith($jobOrder->attachment_url, "//")) {
+            $jobOrder->attachment_url = substr($jobOrder->attachment_url, 1);
+        }
+
+        if ($this->startsWith($jobOrder->payment_supporting_attachment_url, "//")) {
+            $jobOrder->payment_supporting_attachment_url = substr($jobOrder->payment_supporting_attachment_url, 1);
+        }
 
         try {
             DB::beginTransaction();
@@ -60,7 +68,7 @@ class JobOrdersController extends Controller {
 
                 $totalQty += $product->qty;
                 $totalCost += $product->qty * $product->sub_total;
-                
+
                 array_push($jobOrderProducts, $product);
             }
 
@@ -68,8 +76,8 @@ class JobOrdersController extends Controller {
             $jobOrder->total_item_qty = $totalQty;
             $jobOrder->total_cost     = $totalCost;
 
-            $jobOrder->save();            
-            
+            $jobOrder->save();
+
             DB::commit();
         } catch (Exception $e) {
             DB::rollBack();
@@ -77,9 +85,14 @@ class JobOrdersController extends Controller {
             return response($e->getMessage(), 500);
         }
 
-        $response = $jobOrder->toArray();
+        $response                       = $jobOrder->toArray();
         $response["job_order_products"] = $jobOrderProducts;
         return $response;
+    }
+
+    private function startsWith($haystack, $needle) {
+        // search backwards starting from haystack length characters from the end
+        return $needle === "" || strrpos($haystack, $needle, -strlen($haystack)) !== false;
     }
 
     /**

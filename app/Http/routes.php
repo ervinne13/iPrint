@@ -32,6 +32,7 @@ Route::group(['prefix' => 'api', 'middleware' => 'auth:api'], function() {
     Route::post('joborders', 'JobOrdersController@store');
 });
 
+Route::get('/test/dynamic-field', 'TestController@dynamicField');
 
 Route::group(['middleware' => 'auth'], function () {
 

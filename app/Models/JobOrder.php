@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class JobOrder extends Model {
 
     protected $fillable = [
-        "store_id", "requested_by_user_id", "total_item_qty", "total_cost", "payment_ref_no", "status", "remarks", "attachment_url"
+        "store_id", "requested_by_user_id", "total_item_qty", "total_cost", "payment_ref_no", "status", "remarks", "attachment_url", "payment_supporting_attachment_url"
     ];
 
     public function __construct(array $attributes = array()) {

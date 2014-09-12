@@ -134,6 +134,29 @@ var storeId = '{{ $store->id }}';
         </div><!-- /.col -->
     </div>
 
+    <div class="row">
+        <div class="col-lg-5">
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Store Settings</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="input-name">Minimum Order</label>
+                        <input type="number" class="form-control" id="input-min-order" value="{{ $store->min_order_limit }}">
+                    </div>
+                </div><!-- /.box-body -->
+                <div class="box-footer clearfix">
+                    <button id="action-save-settings" class="btn btn-success">Save</button>
+                </div><!-- /.box-footer -->
+            </div><!-- /.box -->
+        </div><!-- /.col -->
+    </div>
+
 </section><!-- /.content -->
 
 @endsection
