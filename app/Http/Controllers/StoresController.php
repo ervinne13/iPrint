@@ -32,7 +32,7 @@ class StoresController extends Controller {
     }
 
     public function datatable() {
-        return Datatables::of(Store::query()->with('owner'))->make(true);
+        return Datatables::of(Store::query()->active()->with('owner'))->make(true);
     }
 
     /**
@@ -126,7 +126,24 @@ class StoresController extends Controller {
             } else {
                 return response("Store not found", 404);
             }
-        } catch (Exception $e) {            
+        } catch (Exception $e) {
+            return response($e->getMessage(), 500);
+        }
+    }
+
+    public function deactivate($id) {
+
+        try {
+            $store = Store::find($id);
+
+            if ($store) {
+                $store->is_active = 0;
+                $store->save();
+                return $store;
+            } else {
+                return response("Store not found", 404);
+            }
+        } catch (Exception $e) {
             return response($e->getMessage(), 500);
         }
     }

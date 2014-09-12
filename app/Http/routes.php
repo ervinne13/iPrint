@@ -46,6 +46,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/stores/{storeId}/salesSummaryReport', 'StoreJobOrdersController@salesSummaryReport');
     Route::get('/stores/{storeId}/orders/active', 'StoreJobOrdersController@activeOrders');
+    Route::get('/stores/{storeId}/deactivate', 'StoresController@deactivate');
 
     Route::get('/products/{product}/uom/datatable', 'ProductUOMController@datatable');
 
