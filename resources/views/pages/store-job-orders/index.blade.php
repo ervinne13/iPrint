@@ -15,6 +15,7 @@
 
 <script type="text/javascript">
 
+var socketUrl = '{{env("APP_SOCKET_URL")}}';
 var storeId = '{{ $store->id }}';
 var dataFetchType = '{{ $dataFetchType }}';
 
