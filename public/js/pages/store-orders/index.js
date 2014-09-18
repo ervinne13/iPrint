@@ -96,7 +96,11 @@
                 {
                     targets: 6,
                     render: function (amount, type, rowData, meta) {
-                        return (amount).formatMoney(2, '.', ',');
+                        if (amount) {
+                            return (amount).formatMoney(2, '.', ',');
+                        } else {
+                            return 0;
+                        }
                     }
                 }
             ]
