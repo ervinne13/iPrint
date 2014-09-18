@@ -44,6 +44,9 @@ class StoresController extends Controller {
 
         $data["shop"]        = new Store();
         $data["shop"]->owner = new User();
+
+        $data["mode"] = "create";
+
         return view("pages.stores.create", $data);
     }
 
@@ -104,7 +107,10 @@ class StoresController extends Controller {
      * @return Response
      */
     public function edit($id) {
-        //
+        $data["shop"] = Store::find($id);
+        $data["mode"] = "edit";
+
+        return view("pages.stores.edit", $data);
     }
 
     /**
@@ -120,7 +126,8 @@ class StoresController extends Controller {
             $store = Store::find($id);
 
             if ($store) {
-                $store->min_order_limit = $request->min_order_limit;
+//                $store->min_order_limit = $request->min_order_limit;
+                $store->fill($request->toArray());
                 $store->save();
                 return $store;
             } else {

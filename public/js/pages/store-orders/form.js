@@ -8,6 +8,7 @@
     $(document).ready(function () {
 
         initializeWS();
+        initializeUI();
         initializeEvents();
 
     });
@@ -21,6 +22,26 @@
             console.log(e);
 
         };
+
+    }
+
+    function initializeUI() {
+
+        var $estimatedTimePicker = $('#estimated-time-timepicker').timepicker({
+            showInputs: false
+        });
+
+        $estimatedTimePicker.on('hide.timepicker', function (e) {
+            var value = $estimatedTimePicker.val();
+            $('[name=estimated_time_of_completion]').val(value);
+        });
+
+        var estimatedTime = $('[name=estimated_time_of_completion]').val();
+        if (estimatedTime) {
+            $('#estimated-time-timepicker').val(estimatedTime);
+        } else {
+            $('#estimated-time-timepicker').val('');
+        }
 
     }
 
@@ -46,8 +67,11 @@
         var url = moduleUrl + jobOrderId;
         var data = {
             status: $('[name=status]').val(),
+            estimated_time_of_completion: $('[name=estimated_time_of_completion]').val(),
             remarks: $('[name=remarks]').val()
         };
+
+        console.log(data);
 
         $.ajax({
             url: url,
@@ -63,7 +87,8 @@
                     jobOrderId: jobOrderId,
                     orderByUserId: orderByUserId,
                     status: data.status,
-                    remarks: data.remarks
+                    remarks: data.remarks,
+                    estimated_time_of_completion: data.estimated_time_of_completion,
                 };
 
                 WSConnection.send(JSON.stringify(notification));

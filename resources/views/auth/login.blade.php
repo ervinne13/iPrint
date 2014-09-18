@@ -82,7 +82,7 @@
                     </div>
                 </form>
 
-                <a href="/register" class="text-center">Register</a>
+                <!--<a href="/register" class="text-center">Register</a>-->
             </div>
             <!-- /.login-box-body -->
         </div>

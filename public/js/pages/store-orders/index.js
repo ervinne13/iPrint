@@ -76,8 +76,13 @@
                 },
                 {
                     targets: 3,
-                    render: function (columnData, type, rowData, meta) {
-                        return "<b>" + columnData + "</b>";
+                    render: function (status, type, rowData, meta) {
+
+                        if (status == 'Cancelled') {
+                            return '<b class="text-red">' + status + "</b>";
+                        } else {
+                            return "<b>" + status + "</b>";
+                        }
                     }
                 },
                 {
@@ -86,6 +91,12 @@
                         var date = new Date(columnData);
 
                         return dateFormat(date, "mm/d/yyyy h:MM TT");
+                    }
+                },
+                {
+                    targets: 6,
+                    render: function (amount, type, rowData, meta) {
+                        return (amount).formatMoney(2, '.', ',');
                     }
                 }
             ]

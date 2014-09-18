@@ -5,6 +5,11 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
+             <li>
+                <a href="/administration">
+                    <span><i class="fa fa-bar-chart"></i> Home / Insights</span>
+                </a>
+            </li>   
             <li>
                 <a href="/users">
                     <span><i class="fa fa-users"></i> Manage Users</span>

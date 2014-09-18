@@ -13,9 +13,9 @@ class Store extends Model {
      * @var array
      */
     protected $fillable = [
-        'name', 'location_lat', 'location_long'
+        'name', 'location_lat', 'location_long', 'description', 'min_order_limit', 'logo_url'
     ];
-    
+
     public function owner() {
         return $this->hasOne(User::class, 'id', 'owner_id');
     }

@@ -24,11 +24,19 @@ Route::group(['middleware' => 'api'], function () {
     Route::post('/api/files/upload', 'API\v1\FilesController@upload');
 });
 
-Route::group(['prefix' => 'api', 'middleware' => 'auth:api'], function() {
+Route::group(['prefix' => 'api'], function() {
     Route::get('stores', 'StoresController@index');
     Route::get('stores/active', 'StoresController@active');
     Route::get('stores/{storeId}/products', 'StoreProductsController@index');
+    Route::get('joborders/{userId}', 'JobOrdersController@ofUser');
+    Route::get('joborders/{jobOrderId}/cancel', 'JobOrdersController@cancel');
+    
+    Route::post('register', 'UsersController@register');
+    
+});
 
+
+Route::group(['prefix' => 'api', 'middleware' => 'auth:api'], function() {
     Route::post('joborders', 'JobOrdersController@store');
 });
 

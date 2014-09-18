@@ -18,6 +18,7 @@
 <script src="{{ asset ("/js/pages/stores/form.js") }}" type="text/javascript"></script>
 
 <script type=text/javascript>
+var storeId = '{{$shop->id}}';
 var mode = '{{$mode}}';
 </script>
 
@@ -41,7 +42,9 @@ var mode = '{{$mode}}';
     <div class="row">
         <div class="col-lg-12">
             <div class="box-foot">
-                <button id="action-submit" type="submit" class="btn btn-primary pull-right">Create New Store and Owner</button>
+                <button id="action-submit" type="submit" class="btn btn-primary pull-right">
+                    Update
+                </button>
             </div>
         </div>
     </div>

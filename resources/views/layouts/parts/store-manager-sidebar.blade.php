@@ -8,10 +8,11 @@ $ownedShopId = Auth::user()->ownedShop->id;
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            <li><a href="/stores/{{$ownedShopId}}"><span>Manage Store</span></a></li>
+            <li><a href="/stores/{{$ownedShopId}}"><span>Store Dashboard</span></a></li>
+            <li><a href="/stores/{{$ownedShopId}}/edit"><span>Manage Store</span></a></li>
             <li><a href="/stores/{{$ownedShopId}}/orders/active"><span>Active Orders</span></a></li>
             <li><a href="/stores/{{$ownedShopId}}/orders"><span>Order History</span></a></li>
-            <li><a href="/stores/{{$ownedShopId}}/products"><span>Manage Products</span></a></li>
+            <li><a href="/stores/{{$ownedShopId}}/products"><span>Manage Products</span></a></li>            
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class JobOrder extends Model {
 
     protected $fillable = [
-        "store_id", "requested_by_user_id", "total_item_qty", "total_cost", "payment_ref_no", "status", "remarks", "attachment_url", "payment_supporting_attachment_url"
+        "store_id", "requested_by_user_id", "total_item_qty", "total_cost", "payment_ref_no", "status", "remarks", "attachment_url", "payment_type", "payment_supporting_attachment_url", "estimated_time_of_completion"
     ];
 
     public function __construct(array $attributes = array()) {
@@ -43,6 +43,14 @@ class JobOrder extends Model {
 
     //
     //  <editor-fold defaultstate="collapsed" desc="Relationships">
+
+    /**
+     * Alias for productJunctions
+     * @return type
+     */
+    public function job_order_products() {
+        return $this->hasMany(JobOrderProduct::class, 'job_order_id');
+    }
 
     public function productJunctions() {
         return $this->hasMany(JobOrderProduct::class, 'job_order_id');
@@ -89,8 +97,16 @@ class JobOrder extends Model {
         return $query->whereYear('created_at', '=', $year);
     }
 
+    public function scopeUnfulfilled($query) {
+        return $query->where("status", '!=', 'Fulfilled');
+    }
+
     public function scopeStore($query, $storeId) {
         return $query->where("store_id", $storeId);
+    }
+
+    public function scopeRequestedBy($query, $userId) {
+        return $query->where("requested_by_user_id", $userId);
     }
 
     public function scopeAwaitingStoreAction($query) {

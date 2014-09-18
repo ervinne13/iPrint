@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ChangePasswordRequest;
+use App\Models\Role;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -26,6 +28,19 @@ class UsersController extends Controller {
 
     public function dashboard() {
         return view('pages.users.dashboard');
+    }
+
+    public function register(Request $request) {
+
+        try {
+            $user            = new User($request->toArray());
+            $user->role_code = Role::CODE_USER;
+            $user->api_token = str_random(60);
+            $user->save();
+            return $user->withHidden('api_token');
+        } catch (Exception $e) {
+            return response($e->getMessage(), 500);
+        }
     }
 
     public function changepassword() {

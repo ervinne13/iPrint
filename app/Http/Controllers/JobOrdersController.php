@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\JobOrder;
 use App\Models\JobOrderProduct;
+use DateTime;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -28,6 +29,29 @@ class JobOrdersController extends Controller {
      */
     public function create() {
         //
+    }
+
+    public function ofUser($userId) {
+        return JobOrder::Unfulfilled()
+                        ->requestedBy($userId)
+                        ->with('job_order_products')
+                        ->get();
+    }
+
+    public function cancel($jobOrderId) {
+
+        $jo = JobOrder::find($jobOrderId);
+        if ($jo) {
+            try {
+                $jo->status = "Cancelled";
+                $jo->save();
+                return $jo;
+            } catch (\Exception $e) {
+                return response($e->getMessage(), 500);
+            }
+        } else {
+            return response("Job order not found", 404);
+        }
     }
 
     /**
@@ -86,6 +110,7 @@ class JobOrdersController extends Controller {
         }
 
         $response                       = $jobOrder->toArray();
+        $response["created_at"]         = (new DateTime($response["created_at"]))->format("m/d/Y G:i A");
         $response["job_order_products"] = $jobOrderProducts;
         return $response;
     }

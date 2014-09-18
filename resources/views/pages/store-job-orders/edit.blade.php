@@ -2,10 +2,12 @@
 
 @section('css')
 <link href="{{ asset("/vendor/dataTables/datatables.min.css") }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset("/bower_components/AdminLTE/plugins/timepicker/bootstrap-timepicker.min.css")}}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('js')
 <script src="{{ asset ("/vendor/dataTables/datatables.min.js") }}" type="text/javascript"></script>
+<script src="{{ asset ("/bower_components/AdminLTE/plugins/timepicker/bootstrap-timepicker.min.js") }}" type="text/javascript"></script>
 <script src="{{ asset ("/js/form-utilities.js") }}" type="text/javascript"></script>
 <script src="{{ asset ("/js/datatable-utilities.js") }}" type="text/javascript"></script>
 <script src="{{ asset ("/vendor/jquery/jquery.validate.js") }}" type="text/javascript"></script>

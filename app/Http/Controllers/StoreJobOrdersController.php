@@ -19,6 +19,7 @@ class StoreJobOrdersController extends Controller {
         "Pending",
         "Ongoing",
         "Ready for Pickup",
+        "Cancelled",
         "Fullfilled"
     ];
 
@@ -66,6 +67,15 @@ class StoreJobOrdersController extends Controller {
         
     }
 
+    public function userOrders($storeId, $userId) {
+
+        return JobOrder::Store($storeId)
+                        ->requestedBy($userId)
+                        ->unfulfilled()
+                        ->with('productJunctions')
+                        ->get();
+    }
+
     public function activeOrders($id) {
         $data['store']         = Store::find($id);
         $data['dataFetchType'] = 'activeOnly';
@@ -107,6 +117,8 @@ class StoreJobOrdersController extends Controller {
         try {
             $jobOrder->status  = $request->status;
             $jobOrder->remarks = $request->remarks;
+
+            $jobOrder->estimated_time_of_completion = $request->estimated_time_of_completion;
 
             $jobOrder->save();
 
