@@ -32,7 +32,7 @@ class UsersController extends Controller {
 
     public function deactivate($userId) {
 
-        try {            
+        try {
             $user = User::find($userId);
 
             if ($user) {
@@ -54,6 +54,7 @@ class UsersController extends Controller {
             $user            = new User($request->toArray());
             $user->role_code = Role::CODE_USER;
             $user->api_token = str_random(60);
+            $user->password  = \Hash::make($request->password);
             $user->save();
             return $user->withHidden('api_token');
         } catch (Exception $e) {
