@@ -33,7 +33,9 @@
                     render: function (columnData, type, rowData, meta) {
                         console.log(columnData);
                         var deleteAction = datatable_utilities.getDefaultDeleteAction(columnData);
-                        var view = datatable_utilities.getInlineActionsView([deleteAction]);
+                        var editAction = datatable_utilities.getDefaultEditAction(columnData);
+                        var viewAction = datatable_utilities.getDefaultViewAction(columnData);
+                        var view = datatable_utilities.getInlineActionsView([viewAction, editAction, deleteAction]);
                         return view;
                     }
                 }

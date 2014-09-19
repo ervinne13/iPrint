@@ -34,6 +34,7 @@
                     <table class="table table-striped table-borderless" id="users-table">
                         <thead>
                             <tr>                                
+                                <th></th>
                                 <th>Id</th>
                                 <!--<th>Status</th>-->
                                 <th>Name</th>

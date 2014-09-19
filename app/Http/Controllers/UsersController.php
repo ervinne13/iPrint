@@ -23,11 +23,29 @@ class UsersController extends Controller {
     }
 
     public function datatable() {
-        return Datatables::of(User::with('role'))->make(true);
+        return Datatables::of(User::Active()->with('role'))->make(true);
     }
 
     public function dashboard() {
         return view('pages.users.dashboard');
+    }
+
+    public function deactivate($userId) {
+
+        try {            
+            $user = User::find($userId);
+
+            if ($user) {
+                $user->is_active = '0';
+                $user->save();
+            } else {
+                return response("User not found", 404);
+            }
+
+            return $user;
+        } catch (\Exception $e) {
+            return response($e->getMessage(), 500);
+        }
     }
 
     public function register(Request $request) {

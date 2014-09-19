@@ -30,9 +30,8 @@ Route::group(['prefix' => 'api'], function() {
     Route::get('stores/{storeId}/products', 'StoreProductsController@index');
     Route::get('joborders/{userId}', 'JobOrdersController@ofUser');
     Route::get('joborders/{jobOrderId}/cancel', 'JobOrdersController@cancel');
-    
+
     Route::post('register', 'UsersController@register');
-    
 });
 
 
@@ -66,6 +65,8 @@ Route::group(['middleware' => 'auth'], function () {
     //  UOM
     Route::get('/uom/datatable', 'UOMController@datatable');
     Route::resource('uom', 'UOMController');
+
+    Route::get('/users/{userId}/deactivate', 'UsersController@deactivate');
 
     Route::get('/users/datatable', 'UsersController@datatable');
     Route::get('/users/dashboard', 'UsersController@dashboard');

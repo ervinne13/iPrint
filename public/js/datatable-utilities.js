@@ -16,6 +16,24 @@ datatable_utilities.getInlineActionsView = function (actions) {
 
 };
 
+datatable_utilities.getDefaultViewAction = function (id, baseUrl) {
+
+    var href = window.location.href + "/" + id;
+
+    if (baseUrl) {
+        href = baseUrl + "/" + id;
+    }
+
+    return {
+        id: id,
+        href: href,
+        name: "view",
+        displayName: "View",
+        icon: "fa-search"
+    };
+};
+
+
 datatable_utilities.getDefaultEditAction = function (id, baseUrl) {
 
     var href = window.location.href + "/" + id + "/edit";

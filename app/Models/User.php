@@ -28,6 +28,10 @@ class User extends Authenticatable {
         return $this->hasOne(Store::class, 'owner_id');
     }
 
+    function scopeActive($query) {
+        return $query->where('is_active', 1);
+    }
+
     function role() {
         return $this->hasOne(Role::class, 'code', 'role_code');
     }
