@@ -109,6 +109,10 @@ class JobOrder extends Model {
         return $query->where("requested_by_user_id", $userId);
     }
 
+    public function scopeOpen($query) {
+        return $query->whereIn("status", ["Open", "Awaiting Confirmation", "Pending", "Ongoing"]);
+    }
+
     public function scopeAwaitingStoreAction($query) {
         return $query->whereIn("status", ["Open"]);
     }

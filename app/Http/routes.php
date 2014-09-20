@@ -19,14 +19,15 @@ Route::get('/', function () {
 //  Custom registration
 Route::post('/users/register', 'RegistrationController@registerUser');
 
-Route::group(['middleware' => 'api'], function () {
-    Route::post('/api/login', 'API\v1\AuthController@login');
-    Route::post('/api/files/upload', 'API\v1\FilesController@upload');
+Route::group(['middleware' => 'api', 'prefix' => 'api'], function () {
+    Route::post('/login', 'API\v1\AuthController@login');
+    Route::post('/files/upload', 'API\v1\FilesController@upload');
 });
 
 Route::group(['prefix' => 'api'], function() {
     Route::get('stores', 'StoresController@index');
     Route::get('stores/active', 'StoresController@active');
+    Route::get('stores/{storeId}/usersWithOpenOrders', 'StoresController@usersWithOpenOrders');
     Route::get('stores/{storeId}/products', 'StoreProductsController@index');
     Route::get('joborders/{userId}', 'JobOrdersController@ofUser');
     Route::get('joborders/{jobOrderId}/cancel', 'JobOrdersController@cancel');

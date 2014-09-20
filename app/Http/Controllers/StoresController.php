@@ -35,6 +35,21 @@ class StoresController extends Controller {
         return Datatables::of(Store::query()->active()->with('owner'))->make(true);
     }
 
+    public function usersWithOpenOrders($storeId) {
+        $openJobOrders   = JobOrder::Store($storeId)->open()->with('requestedBy')->get();
+        $usersWithOrders = [];
+
+        foreach ($openJobOrders AS $jobOrder) {
+            array_push($usersWithOrders, [
+                "name"         => $jobOrder->requestedBy->name,
+                "email"        => $jobOrder->requestedBy->email,
+                "order_status" => $jobOrder->status
+            ]);
+        }
+
+        return $usersWithOrders;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
