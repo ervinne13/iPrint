@@ -127,6 +127,7 @@ class JobOrder extends Model {
 
     public function scopeStoreDatatable($query, $store) {
         return $query
+			->where("store_id", $store)
                         ->with('requestedBy')
                         ->with(['productJunctions' => function($query) {
                                 $query->leftJoin('products', 'product_id', '=', 'id');
